@@ -3,6 +3,8 @@ import configparser
 
 # CONFIG
 config = configparser.ConfigParser()
+
+# read connection details from the config file
 config.read('dwh.cfg')
 
 # DROP TABLES
