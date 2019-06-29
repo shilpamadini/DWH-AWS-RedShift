@@ -157,12 +157,12 @@ artist_table_insert = ("insert into artists (select distinct \
 artist_id,artist_name,artist_location,artist_latitude::float,artist_logitude::float from staging_songs);")
 
 time_table_insert = ("insert into time (SELECT DISTINCT (TIMESTAMP 'epoch' + ts/1000 * interval '1 second') AS start_time, \
-date_part(h, (TIMESTAMP 'epoch' + ts/1000 * interval '1 second'))::int as hour, \
-date_part(d, (TIMESTAMP 'epoch' + ts/1000 * interval '1 second'))::int as day, \
-date_part(w, (TIMESTAMP 'epoch' + ts/1000 * interval '1 second'))::int as week, \
-date_part(mon, (TIMESTAMP 'epoch' + ts/1000 * interval '1 second'))::int as month, \
-date_part(y, (TIMESTAMP 'epoch' + ts/1000 * interval '1 second'))::int as year, \
-date_part(dow, (TIMESTAMP 'epoch' + ts/1000 * interval '1 second'))::int as weekday \
+date_part(h, start_time)::int as hour, \
+date_part(d, start_time)::int as day, \
+date_part(w, start_time)::int as week, \
+date_part(mon, start_time)::int as month, \
+date_part(y, start_time)::int as year, \
+date_part(dow, start_time)::int as weekday \
 FROM staging_events );")
 
 # QUERY LISTS
